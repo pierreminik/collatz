@@ -15,17 +15,19 @@
     data: number
   });
   
-  $: data = [{
-    group: `${$state.context.input}`,
-    x: 0,
-    y: $state.context.input
-  }, ... $state.context.outputs.map((d, i) => {
-    return {
+  $: if ($state.value === 'idle') { 
+    data = [{
       group: `${$state.context.input}`,
-      x: i + 1,
-      y: d
-    };
-  })];
+      x: 0,
+      y: $state.context.input
+    }, ... $state.context.outputs.map((d, i) => {
+      return {
+        group: `${$state.context.input}`,
+        x: i + 1,
+        y: d
+      };
+    })];
+  }
 </script>
 
 <input type="number" bind:value={number} />
@@ -49,6 +51,6 @@
     }
   },
   "curve": "curveLinear",
-  "height": "400px"
+  "height": "600px"
   }}
   />

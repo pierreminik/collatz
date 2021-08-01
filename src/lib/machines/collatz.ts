@@ -42,7 +42,7 @@ const collatzMachine = createMachine<
         },
       },
       after: {
-        600: {
+        300: {
           target: 'calculate'
         }
       }
